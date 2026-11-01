@@ -1,0 +1,171 @@
+:root {
+  --ivory: #F7F2E8;
+  --card: #FFFDF8;
+  --border: #E4DACB;
+  --navy: #23252C;
+  --burgundy: #8E2A23;
+  --sub: #6B6257;
+  --gold: #B8862F;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--navy);
+  font-family: "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+.top {
+  background: var(--navy);
+  border-radius: 0 0 28px 28px;
+  padding: env(safe-area-inset-top) 16px 8px;
+}
+.top-inner {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+.butler { width: 150px; height: 150px; flex: none; }
+.bubble {
+  background: var(--card);
+  border: 1px solid rgba(184, 134, 47, 0.6);
+  border-radius: 4px 18px 18px 18px;
+  padding: 12px 16px;
+  line-height: 1.5;
+  margin-bottom: 48px;
+}
+
+main {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.event { font-weight: 700; font-size: 18px; margin: 0 0 8px; }
+.demo {
+  background: #fff4dc;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+section { margin-top: 22px; }
+h2 { font-size: 17px; margin: 0 0 10px; }
+.hint { font-size: 13px; color: var(--sub); font-weight: 400; margin-left: 4px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--navy);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.chip.avoid[aria-pressed="true"] { background: var(--burgundy); border-color: var(--burgundy); }
+
+/* 후보 가게 카드 */
+.places { display: flex; flex-direction: column; gap: 10px; }
+.place {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.place.on { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
+.place-pick {
+  width: 100%;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.place-check {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.place-pick[aria-pressed="true"] .place-check { background: var(--navy); border-color: var(--navy); }
+.place-pick[aria-pressed="true"] .place-check::after { content: "✓"; }
+.place-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.place-name { font-size: 16px; font-weight: 700; overflow-wrap: anywhere; }
+.place-meta { font-size: 13px; color: var(--sub); }
+.place-link {
+  display: block;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--burgundy);
+  text-decoration: none;
+}
+.place-link::after { content: " ↗"; }
+
+.notice {
+  margin-top: 26px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--sub);
+}
+.notice strong { color: var(--navy); display: block; margin-bottom: 2px; }
+
+.primary {
+  margin-top: 20px;
+  width: 100%;
+  min-height: 54px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--burgundy);
+  color: #fff;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.primary:disabled { opacity: 0.5; cursor: default; }
+
+.error { color: var(--burgundy); font-size: 14px; }
+.center { text-align: center; line-height: 1.6; }
+.butler-big { width: 220px; height: 220px; }
+.done-title { font-size: 26px; margin: 4px 0 6px; }
+
+.ad-slot {
+  margin: 28px auto 0;
+  min-height: 100px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+}
+.ad-label { font-size: 12px; color: var(--sub); }

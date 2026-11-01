@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#23252C">
+  <title>회식 장소 투표 · 찾아줘 회식장소</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <img src="img/greet.png" alt="김총무" class="butler" width="150" height="150">
+      <div class="bubble" id="greeting">가고 싶은 회식 장소를 여쭙고 싶습니다.<br>30초면 충분합니다.</div>
+    </div>
+  </header>
+
+  <main>
+    <p class="event" id="event-info" hidden></p>
+    <p class="demo" id="demo-banner" hidden>데모 모드입니다. 응답은 저장되지 않습니다.</p>
+
+    <!-- 투표 화면 (광고 없음) -->
+    <form id="vote-form" hidden>
+      <section>
+        <h2>가고 싶은 곳 <span class="hint">1~3곳 골라 주십시오</span></h2>
+        <div class="places" id="places"></div>
+      </section>
+      <section>
+        <h2>못 드시는 것·알레르기</h2>
+        <div class="chips" id="allergies"></div>
+      </section>
+
+      <div class="notice">
+        <strong>익명 집계입니다.</strong>
+        이름을 묻지 않고, 누가 무엇을 골랐는지도 저장하지 않습니다.
+        총무에게는 가게별 합계만 보입니다.
+      </div>
+
+      <button type="submit" class="primary" id="submit">투표하기</button>
+      <p class="error" id="error" role="alert" hidden></p>
+    </form>
+
+    <!-- 안내 (링크 오류·마감) -->
+    <section id="closed" class="center" hidden>
+      <p id="closed-text">링크가 올바르지 않거나 투표가 끝났습니다.</p>
+    </section>
+
+    <!-- 완료 화면: 광고는 여기에만 -->
+    <section id="done" class="center" hidden>
+      <img src="img/cheer.png" alt="" class="butler-big" width="220" height="220">
+      <h2 class="done-title">고맙습니다!</h2>
+      <p>골라 주신 곳은 합계로만 총무에게 전하겠습니다.<br>맛있는 곳으로 모시겠습니다.</p>
+      <div class="ad-slot" id="ad-slot" aria-label="광고">
+        <span class="ad-label">광고</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js" onerror="window.HOESIK_CONFIG = window.HOESIK_CONFIG || {}"></script>
+  <script src="vote.js"></script>
+</body>
+</html>
