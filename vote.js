@@ -20,6 +20,8 @@
   var MAX_PICKS = 3;
   /** 도보 1분 거리 (m) */
   var WALK_M_PER_MIN = 80;
+  /** 이보다 멀면 걸어서 몇 분 대신 km로 보여 줘요 (m) */
+  var NEAR_LIMIT_M = 1200;
   /** 데모 모드용 가상 가게 (이름은 모두 지어낸 것이라 카카오맵 링크는 없어요) */
   var DEMO_PLACES = [
     { id: "k_9001", name: "달빛화로 본점", category: "음식점 > 한식 > 육류,고기", address: "가상로 100", place_url: null, distance_m: 216 },
@@ -103,8 +105,10 @@
     return parts[parts.length - 1].trim();
   }
 
+  /** 가까우면 도보 몇 분, 1.2km(도보 15분)를 넘으면 km로 (앱 후보 고르기와 같은 기준) */
   function walkText(m) {
     if (typeof m !== "number" || !isFinite(m)) return "";
+    if (m > NEAR_LIMIT_M) return "모이는 곳에서 " + (m / 1000).toFixed(1) + "km";
     return "도보 " + Math.max(1, Math.ceil(m / WALK_M_PER_MIN)) + "분";
   }
 
