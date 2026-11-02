@@ -33,6 +33,7 @@
   var MSG_INVALID = "링크가 올바르지 않습니다. 총무에게 받은 링크로 다시 들어와 주십시오.";
   var MSG_CLOSED = "투표가 이미 마감됐습니다. 총무가 곧 장소를 알려 드릴 겁니다.";
   var MSG_TROUBLE = "잠시 문제가 생겼습니다. 조금 뒤에 다시 열어 주십시오.";
+  var MSG_BUSY = "지금 이 링크를 너무 자주 여셨습니다. 잠시 뒤에 다시 열어 주십시오.";
 
   var cfg = window.HOESIK_CONFIG || {};
   var token = new URLSearchParams(location.search).get("t") || "";
@@ -68,6 +69,7 @@
       body: JSON.stringify({ token: token }),
     }).then(function (res) {
       if (res.status === 404) return null;
+      if (res.status === 429) return { busy: true };
       if (!res.ok) throw new Error("요청 실패 (" + res.status + ")");
       return res.json();
     });
@@ -278,6 +280,7 @@
     if (!token) return closed(MSG_INVALID);
     if (alreadyVoted()) return show("done");
     loadVotePlaces().then(function (res) {
+      if (res && res.busy) return closed(MSG_BUSY);
       if (!res || !res.event) return closed(MSG_INVALID);
       if (res.event.closed) return closed(MSG_CLOSED);
       var places = Array.isArray(res.places) ? res.places : [];
