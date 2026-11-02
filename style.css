@@ -115,14 +115,16 @@ h2 { font-size: 17px; margin: 0 0 10px; }
 .place-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .place-name { font-size: 16px; font-weight: 700; overflow-wrap: anywhere; }
 .place-meta { font-size: 13px; color: var(--sub); }
+.place-links { display: flex; border-top: 1px solid var(--border); }
 .place-link {
+  flex: 1;
   display: block;
   padding: 10px 16px;
-  border-top: 1px solid var(--border);
   font-size: 14px;
   color: var(--burgundy);
   text-decoration: none;
 }
+.place-link + .place-link { border-left: 1px solid var(--border); }
 .place-link::after { content: " ↗"; }
 
 .notice {

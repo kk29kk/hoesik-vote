@@ -117,6 +117,22 @@
     return typeof url === "string" && /^https?:\/\/([a-z0-9-]+\.)*kakao\.com\//i.test(url) ? url : null;
   }
 
+  /** 카카오맵 AI 장소 요약(kanana) 페이지. 내용은 가져오지 않고 링크만 걸어요 (장소 ID만, 앱 place_links.dart 와 같아요). */
+  function kananaUrl(id) {
+    var m = /^k_(\d+)$/.exec(String(id || ""));
+    return m ? "https://kanana.kakao.com/place/p?cid=" + m[1] : null;
+  }
+
+  function placeLink(href, text) {
+    var link = document.createElement("a");
+    link.className = "place-link";
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer external";
+    link.textContent = text;
+    return link;
+  }
+
   function showError(text) {
     $("error").textContent = text;
     $("error").hidden = !text;
@@ -161,16 +177,13 @@
       pick.dataset.id = p.id;
       card.appendChild(pick);
 
+      var links = document.createElement("div");
+      links.className = "place-links";
       var url = safeUrl(p.place_url);
-      if (url) {
-        var link = document.createElement("a");
-        link.className = "place-link";
-        link.href = url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer external";
-        link.textContent = "카카오맵에서 보기";
-        card.appendChild(link);
-      }
+      if (url) links.appendChild(placeLink(url, "카카오맵에서 보기"));
+      var summary = demo ? null : kananaUrl(p.id); // 데모 가게는 지어낸 ID라 링크 없음
+      if (summary) links.appendChild(placeLink(summary, "카나나 AI 요약"));
+      if (links.childNodes.length > 0) card.appendChild(links);
       box.appendChild(card);
     });
   }
