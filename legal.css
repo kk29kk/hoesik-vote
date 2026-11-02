@@ -1,0 +1,41 @@
+/* 개인정보처리방침·이용약관 (privacy.html, terms.html). 색은 style.css 와 같아요. */
+:root {
+  --ivory: #F7F2E8;
+  --card: #FFFDF8;
+  --border: #E4DACB;
+  --navy: #23252C;
+  --burgundy: #8E2A23;
+  --sub: #6B6257;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--navy);
+  font-family: "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.7;
+}
+.doc {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top) + 28px) 16px 48px;
+}
+h1 { font-size: 24px; margin: 0 0 4px; }
+.meta { color: var(--sub); font-size: 13px; margin: 0 0 24px; }
+h2 { font-size: 17px; margin: 32px 0 8px; padding-top: 16px; border-top: 1px solid var(--border); }
+h3 { font-size: 15px; margin: 18px 0 6px; }
+p, li { font-size: 15px; }
+ul, ol { padding-left: 22px; margin: 6px 0; }
+.box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 480px; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: var(--card); }
+a { color: var(--burgundy); }
+.foot { margin-top: 40px; color: var(--sub); font-size: 13px; }

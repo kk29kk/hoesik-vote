@@ -171,3 +171,11 @@ h2 { font-size: 17px; margin: 0 0 10px; }
   background: var(--card);
 }
 .ad-label { font-size: 12px; color: var(--sub); }
+
+.legal-links {
+  text-align: center;
+  font-size: 12px;
+  color: var(--sub);
+  padding: 8px 16px calc(env(safe-area-inset-bottom) + 20px);
+}
+.legal-links a { color: var(--sub); }
